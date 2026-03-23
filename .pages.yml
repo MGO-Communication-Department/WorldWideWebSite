@@ -1,25 +1,493 @@
 media:
-  input: public
-  output: /
-  
+  - name: images
+    label: Images
+    input: public/uploads/images
+    output: /uploads/images
+    rename: true
+    categories: [image]
+
+  - name: docs
+    label: Documents
+    input: public/uploads/docs
+    output: /uploads/docs
+    rename: true
+    categories: [document]
+
 content:
-  - name: posts
-    label: Posts
-    type: collection
-    path: src/posts
-    fields:
-      - name: title
-        type: string
-      - name: body
-        type: rich-text
   - name: site
-    label: Site settings
+    label: サイト設定
     type: file
-    path: src/_data/site.json
+    path: src/data/site.yml
+    format: yaml
     fields:
       - name: title
+        label: サイト名
         type: string
+        required: true
+
       - name: description
+        label: サイト説明
         type: text
-      - name: url
+
+      - name: site_url
+        label: サイトURL
         type: string
+
+      - name: logo
+        label: ロゴ
+        type: image
+        options:
+          media: images
+          path: branding
+
+      - name: navigation
+        label: ナビゲーション
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label}"
+        fields:
+          - name: label
+            label: 表示名
+            type: string
+            required: true
+          - name: href
+            label: URL/Path
+            type: string
+            required: true
+
+      - name: footer
+        label: フッター
+        type: object
+        fields:
+          - name: copyright
+            label: コピーライト
+            type: string
+          - name: note
+            label: 注記
+            type: string
+
+  - name: home
+    label: TOP
+    type: file
+    path: src/content/pages/index.md
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        label: ページタイトル
+        type: string
+        required: true
+
+      - name: description
+        label: ディスクリプション
+        type: text
+
+      - name: hero
+        label: ヒーロー
+        type: object
+        fields:
+          - name: eyebrow
+            label: 上部テキスト
+            type: string
+          - name: headline
+            label: 見出し
+            type: string
+            required: true
+          - name: subheadline
+            label: サブ見出し
+            type: text
+          - name: image
+            label: メイン画像
+            type: image
+            options:
+              media: images
+              path: home
+
+      - name: welcome_heading
+        label: ようこそ見出し
+        type: string
+
+      - name: body
+        label: 本文
+        type: rich-text
+
+      - name: sections
+        label: 特集セクション
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: タイトル
+            type: string
+            required: true
+          - name: text
+            label: 説明
+            type: text
+          - name: image
+            label: 画像
+            type: image
+            options:
+              media: images
+              path: home/sections
+
+  - name: about
+    label: About
+    type: file
+    path: src/content/pages/about.md
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        label: タイトル
+        type: string
+        required: true
+      - name: description
+        label: ディスクリプション
+        type: text
+      - name: body
+        label: 本文
+        type: rich-text
+
+  - name: contact
+    label: お問い合わせ
+    type: file
+    path: src/content/pages/contact.md
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        label: タイトル
+        type: string
+        required: true
+
+      - name: description
+        label: ディスクリプション
+        type: text
+
+      - name: contact_methods
+        label: 連絡先
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label}"
+        fields:
+          - name: label
+            label: 種別
+            type: string
+            required: true
+          - name: value
+            label: 値
+            type: string
+            required: true
+          - name: href
+            label: リンク
+            type: string
+
+      - name: body
+        label: 本文
+        type: rich-text
+
+  - name: links
+    label: リンク集
+    type: file
+    path: src/content/pages/links.md
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        label: タイトル
+        type: string
+        required: true
+
+      - name: description
+        label: ディスクリプション
+        type: text
+
+      - name: links
+        label: リンク一覧
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        fields:
+          - name: category
+            label: カテゴリ
+            type: select
+            options:
+              values: [団体, 個人, SNS, 配信, 無線, 放送, ネットワーク, その他]
+
+          - name: name
+            label: 名前
+            type: string
+            required: true
+
+          - name: url
+            label: URL
+            type: string
+            required: true
+
+          - name: description
+            label: 説明
+            type: text
+
+          - name: logo
+            label: ロゴ
+            type: image
+            options:
+              media: images
+              path: links
+
+  - name: business
+    label: 事業情報
+    type: file
+    path: src/content/pages/business.md
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        label: タイトル
+        type: string
+        required: true
+
+      - name: description
+        label: ディスクリプション
+        type: text
+
+      - name: services
+        label: サービス一覧
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: サービス名
+            type: string
+            required: true
+          - name: summary
+            label: 概要
+            type: text
+          - name: status
+            label: 状態
+            type: select
+            options:
+              values:
+                - name: planning
+                  label: 企画中
+                - name: active
+                  label: 提供中
+                - name: paused
+                  label: 休止中
+          - name: image
+            label: 画像
+            type: image
+            options:
+              media: images
+              path: business
+
+      - name: body
+        label: 本文
+        type: rich-text
+
+  - name: organization
+    label: 組織概要
+    type: file
+    path: src/content/pages/organization.md
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        label: タイトル
+        type: string
+        required: true
+
+      - name: description
+        label: ディスクリプション
+        type: text
+
+      - name: profile
+        label: 基本情報
+        type: object
+        fields:
+          - name: organization_name
+            label: 組織名
+            type: string
+          - name: founded
+            label: 設立日
+            type: date
+            default: ""
+            options:
+              format: yyyy-MM-dd
+          - name: location
+            label: 拠点
+            type: string
+          - name: contact_email
+            label: 連絡先メール
+            type: string
+
+      - name: members
+        label: メンバー
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name} / {role}"
+        fields:
+          - name: name
+            label: 名前
+            type: string
+            required: true
+          - name: role
+            label: 役職
+            type: string
+          - name: bio
+            label: 紹介
+            type: text
+          - name: avatar
+            label: 画像
+            type: image
+            options:
+              media: images
+              path: organization
+
+      - name: body
+        label: 本文
+        type: rich-text
+
+  - name: news
+    label: お知らせ
+    type: collection
+    path: src/content/news
+    format: yaml-frontmatter
+    filename:
+      template: "{year}-{month}-{day}-{primary}.md"
+      field: create
+    subfolders: false
+    view:
+      fields: [title, date, published]
+      primary: title
+      sort: [date, title]
+      search: [title, excerpt]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: タイトル
+        type: string
+        required: true
+
+      - name: date
+        label: 公開日
+        type: date
+        options:
+          format: yyyy-MM-dd
+
+      - name: published
+        label: 公開する
+        type: boolean
+
+      - name: excerpt
+        label: 概要
+        type: text
+
+      - name: cover
+        label: アイキャッチ
+        type: image
+        options:
+          media: images
+          path: news
+
+      - name: body
+        label: 本文
+        type: rich-text
+
+  - name: blog
+    label: 投稿一覧
+    type: collection
+    path: src/content/blog
+    format: yaml-frontmatter
+    filename:
+      template: "{year}-{month}-{day}-{primary}.md"
+      field: create
+    subfolders: false
+    view:
+      fields: [title, category, date, author, published]
+      primary: title
+      sort: [date, title, category]
+      search: [title, excerpt, author]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: タイトル
+        type: string
+        required: true
+
+      - name: date
+        label: 公開日
+        type: date
+        options:
+          format: yyyy-MM-dd
+
+      - name: author
+        label: 著者
+        type: string
+
+      - name: category
+        label: カテゴリ
+        type: select
+        options:
+          values:
+            - 未分類
+            - カメラ
+            - 無線
+            - 放送
+            - ネットワーク
+            - 機材整備
+            - 車両整備
+            - 回線
+            - その他
+
+      - name: published
+        label: 公開する
+        type: boolean
+
+      - name: excerpt
+        label: 概要
+        type: text
+
+      - name: cover
+        label: アイキャッチ
+        type: image
+        options:
+          media: images
+          path: blog
+
+      - name: gallery
+        label: ギャラリー
+        type: image
+        options:
+          media: images
+          path: blog/gallery
+          multiple:
+            max: 12
+          unique: true
+          rename: true
+
+      - name: body
+        label: 本文
+        type: rich-text
+
+settings:
+  content:
+    merge: true
+  commit:
+    templates:
+      create: "content(create): {path}"
+      update: "content(update): {path}"
+      delete: "content(delete): {path}"
+      rename: "content(rename): {oldPath} -> {newPath}"
