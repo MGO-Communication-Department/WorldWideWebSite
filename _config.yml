@@ -1,0 +1,18 @@
+title: みりおが逓信部
+description: 誤家庭の誤家庭による誤家庭のための組織
+lang: ja
+timezone: Asia/Tokyo
+
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+
+collections:
+  pages:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post

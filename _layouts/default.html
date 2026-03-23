@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ site.description }}" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">内容をスキップ</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <img
+            class="brand-logo"
+            src="/assets/images/header-logo.jpg"
+            alt="みりおが逓信部 ロゴ"
+            loading="eager"
+            decoding="async"
+          />
+          <div class="brand-text">
+            <p class="site-title">{{ site.title }}</p>
+            <p class="site-tagline">{{ site.description }}</p>
+          </div>
+        </div>
+        <nav aria-label="Main Menu">
+          <ul class="menu">
+            <li><a href="/">ホーム</a></li>
+            <li><a href="/blog/">ブログ</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content" class="container">
+      {{ content }}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Copyright © 2025 みりおが逓信部 | Powered by Astra WordPress テーマ</p>
+      </div>
+    </footer>
+  </body>
+</html>
