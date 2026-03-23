@@ -1,0 +1,65 @@
+baseURL = "https://www.mgoteishin.org/"
+languageCode = "ja-jp"
+defaultContentLanguage = "ja"
+title = "みりおが逓信部"
+enableRobotsTXT = true
+
+theme = ["github.com/google/docsy"]
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.124.0"
+
+  [[module.imports]]
+    path = "github.com/google/docsy"
+
+  [[module.imports]]
+    path = "github.com/FortAwesome/Font-Awesome"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[params]
+  description = "誤家庭の誤家庭による誤家庭のための組織"
+  copyright = "みりおが逓信部"
+
+  [params.ui]
+    navbar_logo = true
+    sidebar_menu_compact = true
+    breadcrumb_disable = true
+    footer_about_enable = false
+
+[languages]
+  [languages.ja]
+    languageName = "日本語"
+    contentDir = "content"
+    weight = 1
+
+[menu]
+  [[menu.main]]
+    name = "トップ"
+    url = "/"
+    weight = 10
+
+  [[menu.main]]
+    name = "逓信部とは"
+    url = "/about/"
+    weight = 20
+
+  [[menu.main]]
+    name = "入部方法"
+    url = "/join/"
+    weight = 30
+
+  [[menu.main]]
+    name = "活動紹介"
+    url = "/activities/"
+    weight = 40
+
+  [[menu.main]]
+    name = "ブログ"
+    url = "/blog/"
+    weight = 50

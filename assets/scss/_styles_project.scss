@@ -1,0 +1,379 @@
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap");
+
+:root {
+  --site-bg: #f2f4f7;
+  --ink: #111c2d;
+  --steel: #4f6279;
+  --accent: #1d6ed8;
+  --accent-2: #12b4b4;
+  --card-radius: 16px;
+}
+
+body {
+  background: var(--site-bg);
+  color: var(--ink);
+  font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  letter-spacing: 0.01em;
+}
+
+.td-navbar {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.88);
+  border-bottom: 1px solid rgba(17, 28, 45, 0.08);
+}
+
+/* Top hero banner */
+.home-hero-banner {
+  position: relative;
+  margin-top: -1rem;
+  margin-bottom: 1.6rem;
+  overflow: hidden;
+  background: #0b1728;
+}
+
+.home-hero-banner-image {
+  display: block;
+  width: 100%;
+  height: clamp(320px, 56vw, 1000px);
+  object-fit: cover;
+  object-position: center 34%;
+}
+
+.home-hero-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5, 10, 18, 0.72) 0%, rgba(5, 10, 18, 0.42) 28%, rgba(5, 10, 18, 0.05) 62%);
+  pointer-events: none;
+}
+
+.home-hero-banner-copy {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(14px, 3.5vw, 34px);
+  z-index: 1;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  max-width: 1100px;
+  color: #f4f8fd;
+  text-align: left;
+}
+
+.home-hero-banner-copy h1 {
+  margin: 0 0 0.5rem;
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(1.5rem, 4.2vw, 3.2rem);
+  line-height: 1.28;
+  letter-spacing: 0.01em;
+  text-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+}
+
+.home-hero-banner-copy p {
+  margin: 0 0 1rem;
+  max-width: 68ch;
+  color: rgba(244, 248, 253, 0.96);
+}
+
+/* Legacy cover hero (kept for fallback) */
+.td-box--orange {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, rgba(8, 20, 35, 0.8), rgba(13, 31, 52, 0.55)),
+    radial-gradient(circle at 12% 12%, rgba(18, 180, 180, 0.25), transparent 34%),
+    url("/images/header-logo.jpg") center center / cover no-repeat;
+}
+
+.td-box--orange::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5, 10, 18, 0.5), rgba(5, 10, 18, 0));
+  pointer-events: none;
+}
+
+.td-box--orange .col {
+  position: relative;
+  z-index: 1;
+}
+
+.home-hero-kicker {
+  display: inline-block;
+  margin-bottom: 1.2rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.26);
+}
+
+.td-box--orange h1 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(2rem, 5.3vw, 4.6rem);
+  line-height: 1.22;
+  letter-spacing: 0.02em;
+  color: #f4f8fd;
+  text-shadow: 0 6px 26px rgba(0, 0, 0, 0.42);
+  position: relative;
+  display: inline-block;
+  padding: 1rem 1.5rem;
+  border-radius: 18px;
+  isolation: isolate;
+}
+
+.td-box--orange h1::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -1;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  background:
+    linear-gradient(120deg, rgba(8, 20, 35, 0.58), rgba(13, 31, 52, 0.2)),
+    url("/images/header-logo.jpg") center center / cover no-repeat;
+}
+
+.td-box--orange .lead {
+  max-width: 70ch;
+  margin-inline: auto;
+  color: rgba(242, 248, 255, 0.94);
+}
+
+.home-hero-logo-wrap {
+  margin-bottom: 1.4rem;
+}
+
+.home-hero-logo {
+  width: 92vw;
+  max-width: 860px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 26px 54px rgba(0, 0, 0, 0.38);
+}
+
+.home-hero-cta .btn {
+  border-radius: 999px;
+  padding: 0.65rem 1.35rem;
+  font-weight: 800;
+}
+
+/* Lead strip */
+.td-box--dark {
+  background: linear-gradient(90deg, #081426, #15253d);
+}
+
+.td-box--dark p {
+  font-size: clamp(1.2rem, 2.6vw, 1.8rem);
+  font-weight: 900;
+}
+
+/* News card */
+.home-news-box {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 1.7rem 1.4rem;
+  border-radius: var(--card-radius);
+  background: #ffffff;
+  box-shadow: 0 12px 34px rgba(14, 22, 33, 0.1);
+}
+
+.home-news-split {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.home-news-head {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100%;
+  border-right: 1px solid rgba(17, 28, 45, 0.12);
+  padding-right: 1rem;
+}
+
+.home-news-head-icon {
+  margin: 0 0 0.55rem;
+  font-size: 2.2rem;
+  line-height: 1;
+  color: #0f2f54;
+}
+
+.home-news-head h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 2.6vw, 2.2rem);
+  font-weight: 900;
+}
+
+.home-news-items {
+  min-width: 0;
+}
+
+.home-news-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.home-news-list li {
+  margin-bottom: 0.65rem;
+}
+
+.home-news-date {
+  display: inline-block;
+  margin-right: 0.5rem;
+  color: #5c6d83;
+  font-size: 0.9rem;
+}
+
+.home-news-more {
+  margin: 0.45rem 0 0;
+}
+
+.home-news-more a {
+  font-weight: 700;
+}
+
+/* Feature cards: 1 column on mobile, 3 columns on desktop */
+.home-three-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+.home-three-features > .col-lg-4 {
+  width: auto;
+  margin-bottom: 0 !important;
+  border-radius: var(--card-radius);
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgba(14, 22, 33, 0.08);
+  padding: 1.7rem 1.15rem;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.home-three-features > .col-lg-4:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 34px rgba(14, 22, 33, 0.13);
+}
+
+.home-three-features .h1 {
+  color: #205788;
+}
+
+.home-three-features .h3 {
+  font-size: 1.75rem;
+  font-weight: 900;
+}
+
+/* Showcase */
+.td-box--secondary {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(18, 180, 180, 0.22), transparent 38%),
+    linear-gradient(135deg, #57687d, #4a5b70);
+}
+
+.td-box--secondary .col {
+  max-width: 1080px;
+  margin-inline: auto;
+}
+
+.home-romance-split {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.home-romance-copy {
+  text-align: center;
+}
+
+.home-romance-icon {
+  margin: 0 0 0.55rem;
+  font-size: 2.1rem;
+  line-height: 1;
+}
+
+.home-romance-copy h2 {
+  margin: 0 0 0.8rem;
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(1.7rem, 2.8vw, 2.6rem);
+  line-height: 1.25;
+}
+
+.home-romance-copy p {
+  margin: 0;
+  color: rgba(239, 245, 255, 0.94);
+}
+
+.home-romance-image {
+  width: 100%;
+  max-width: 820px;
+  border-radius: 16px;
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.28);
+}
+
+/* Footer */
+.td-footer,
+.td-footer * {
+  color: rgba(239, 245, 255, 0.9);
+}
+
+@media (min-width: 992px) {
+  .home-three-features {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .home-three-features > .col-lg-4 {
+    padding: 1.9rem 1.2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-hero-banner {
+    margin-top: -0.5rem;
+  }
+
+  .home-news-split {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .home-news-head {
+    border-right: 0;
+    border-bottom: 1px solid rgba(17, 28, 45, 0.12);
+    padding-right: 0;
+    padding-bottom: 0.7rem;
+  }
+
+  .home-romance-split {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .home-romance-copy {
+    text-align: center;
+  }
+
+  .home-romance-image {
+    max-width: 100%;
+  }
+
+  .home-hero-banner-copy p {
+    font-size: 0.92rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .home-hero-cta .btn {
+    padding: 0.55rem 1rem;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "worldwidewebsite",
+  "version": "1.0.0",
+  "description": "みりおが逓信部サイトを Hugo + Docsy で構築するリポジトリです。\r トップページは Wayback で確認できる過去サイトの文言を参考に再構成し、\r 各詳細ページは「工事中」プレースホルダーを配置しています。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.5.8",
+    "postcss-cli": "^11.0.1"
+  }
+}

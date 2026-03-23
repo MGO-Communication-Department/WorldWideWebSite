@@ -1,0 +1,16 @@
+{{- $limit := 3 -}}
+{{- with .Get "limit" -}}
+  {{- $limit = int . -}}
+{{- end -}}
+{{- $blogPages := where site.RegularPages "Section" "blog" -}}
+{{- $latest := first $limit ($blogPages.ByDate.Reverse) -}}
+<ul class="home-news-list">
+  {{- range $latest }}
+  <li>
+    <span class="home-news-date">投稿日: {{ .Date.Format "2006-01-02" }}</span>
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  </li>
+  {{- else }}
+  <li>投稿はまだありません。</li>
+  {{- end }}
+</ul>

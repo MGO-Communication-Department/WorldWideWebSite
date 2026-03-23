@@ -5,7 +5,7 @@ author: ﾎｳｿｳｶﾁｮｰ
 categories:
   - カメラ
   - 未分類
-excerpt: ドーモ、ﾎｰｿｰｶﾁｮｰYです。HDCAMも書いたのでついでにXDCAMのも。手順？終わりに。
+summary: ドーモ、ﾎｰｿｰｶﾁｮｰYです。HDCAMも書いたのでついでにXDCAMのも。手順？終わりに。
 ---
 
 ドーモ、ﾎｰｿｰｶﾁｮｰYです。HDCAMも書いたのでついでにXDCAMのも。

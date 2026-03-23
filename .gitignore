@@ -1,0 +1,6 @@
+node_modules/
+.hugo_build_test/
+.hugo_build/
+public/
+resources/_gen/
+.hugo_build.lock
